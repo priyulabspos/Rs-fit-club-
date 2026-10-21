@@ -1,0 +1,182 @@
+// This is your Prisma schema file for RS Fit Club
+// Learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// 1. User Account (Owner, Staff, Member)
+model User {
+  id                String       @id @default(cuid())
+  email             String?      @unique
+  phone             String?      @unique
+  passwordHash      String
+  role              String       @default("MEMBER") // OWNER | STAFF | MEMBER
+  isActive          Boolean      @default(true)
+  memberId          String?      @unique
+  member            Member?      @relation(fields: [memberId], references: [id], onDelete: SetNull)
+  collectedPayments Payment[]    @relation("CollectedBy")
+  auditLogs         AuditLog[]
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+}
+
+// 2. Member Profile
+model Member {
+  id               String        @id @default(cuid())
+  memberCode       String        @unique // e.g. RS0001
+  fullName         String
+  phone            String
+  email            String?
+  dateOfBirth      DateTime?
+  gender           String?
+  emergencyContact String?
+  photoUrl         String?
+  joinedOn         DateTime      @default(now())
+  notes            String?
+  isBlocked        Boolean       @default(false)
+  blockedReason    String?
+  deviceUserId     String?       @unique // ID on the physical biometric scanner
+  user             User?
+  memberships      Membership[]
+  payments         Payment[]
+  accessEvents     AccessEvent[]
+  reminders        Reminder[]
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+}
+
+// 3. Subscription Plans
+model Plan {
+  id                 String       @id @default(cuid())
+  name               String
+  durationDays       Int
+  priceInPaise       Int
+  joiningFeeInPaise  Int          @default(0)
+  isActive           Boolean      @default(true)
+  description        String?
+  memberships        Membership[]
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
+}
+
+// 4. Membership Records
+model Membership {
+  id          String    @id @default(cuid())
+  memberId    String
+  member      Member    @relation(fields: [memberId], references: [id], onDelete: Cascade)
+  planId      String
+  plan        Plan      @relation(fields: [planId], references: [id])
+  startDate   DateTime
+  endDate     DateTime
+  status      String    @default("ACTIVE") // ACTIVE | EXPIRED | FROZEN | CANCELLED
+  payments    Payment[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+// 5. Payments & Receipts
+model Payment {
+  id            String      @id @default(cuid())
+  memberId      String
+  member        Member      @relation(fields: [memberId], references: [id], onDelete: Cascade)
+  membershipId  String?
+  membership    Membership? @relation(fields: [membershipId], references: [id], onDelete: SetNull)
+  amountInPaise Int
+  mode          String      // CASH | UPI | CARD | ONLINE
+  receiptNumber String      @unique
+  paidOn        DateTime    @default(now())
+  periodStart   DateTime
+  periodEnd     DateTime
+  collectedBy   String
+  collector     User        @relation("CollectedBy", fields: [collectedBy], references: [id])
+  note          String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+// 6. Access Control Events
+model AccessEvent {
+  id          String   @id @default(cuid())
+  memberId    String?
+  member      Member?  @relation(fields: [memberId], references: [id], onDelete: SetNull)
+  deviceId    String
+  device      Device   @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+  occurredAt  DateTime @default(now())
+  direction   String   @default("IN") // IN | OUT
+  decision    String   // ALLOWED | DENIED
+  reason      String   // OK | EXPIRED | BLOCKED | UNKNOWN_USER | FROZEN
+  source      String   @default("DEVICE") // DEVICE | MANUAL
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// 7. Gate Hardware Devices
+model Device {
+  id           String        @id @default(cuid())
+  name         String
+  brand        String?
+  model        String?
+  location     String?
+  apiKeyHash   String        @unique
+  lastSeenAt   DateTime?
+  status       String        @default("ONLINE") // ONLINE | OFFLINE
+  accessEvents AccessEvent[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+// 8. Website Enquiries
+model Enquiry {
+  id             String   @id @default(cuid())
+  name           String
+  phone          String
+  interestedPlan String?
+  message        String?
+  status         String   @default("NEW") // NEW | CALLED | CONVERTED | CLOSED
+  source         String   @default("WEBSITE")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+// 9. Member Reminders
+model Reminder {
+  id        String   @id @default(cuid())
+  memberId  String
+  member    Member   @relation(fields: [memberId], references: [id], onDelete: Cascade)
+  type      String   // EXPIRY_WARNING | OVERDUE
+  channel   String   // WHATSAPP | SMS | IN_APP
+  sentAt    DateTime @default(now())
+  status    String   @default("SENT") // SENT | FAILED | PENDING
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// 10. Audit Log
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  action    String   // CREATE | UPDATE | DELETE | OVERRIDE | REVERSAL
+  entity    String   // Payment | Member | Membership | Plan | Device
+  entityId  String
+  before    String?  // JSON string
+  after     String?  // JSON string
+  at        DateTime @default(now())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// 11. Gym Settings
+model Setting {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
