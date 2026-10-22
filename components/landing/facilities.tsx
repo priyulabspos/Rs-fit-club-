@@ -42,27 +42,27 @@ export function Facilities() {
   ];
 
   return (
-    <section id="facilities" className="py-20 bg-[#f7f3ee] border-b border-stone-200">
+    <section id="facilities" className="py-14 sm:py-20 bg-[#f7f3ee] border-b border-stone-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+        <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4 mb-12 sm:mb-16">
           <div className="inline-block text-xs font-bold uppercase tracking-widest text-[#d7262e]">
             World-Class Infrastructure
           </div>
-          <h2 className="text-4xl sm:text-5xl font-extrabold uppercase tracking-tight text-stone-900">
+          <h2 className="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-stone-900">
             Training Facilities & Equipment
           </h2>
-          <p className="text-stone-600 text-base sm:text-lg">
+          <p className="text-stone-600 text-sm sm:text-lg">
             Designed to ensure no waiting for weights and providing a spacious, focused atmosphere for every session.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {facilities.map((f) => {
             const Icon = f.icon;
             return (
               <div
                 key={f.title}
-                className="rounded-2xl bg-white p-8 border border-stone-200/80 shadow-sm hover:shadow-md transition-all group"
+                className="rounded-2xl bg-white p-5 sm:p-8 border border-stone-200/80 shadow-sm hover:shadow-md transition-all group"
               >
                 <div className="flex items-center justify-between mb-6">
                   <div className="w-12 h-12 rounded-xl bg-red-50 text-[#d7262e] group-hover:bg-[#d7262e] group-hover:text-white transition-colors flex items-center justify-center">

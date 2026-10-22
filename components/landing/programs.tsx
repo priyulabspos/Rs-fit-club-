@@ -38,24 +38,24 @@ export function Programs() {
   ];
 
   return (
-    <section id="programs" className="py-20 bg-white border-b border-stone-200">
+    <section id="programs" className="py-14 sm:py-20 bg-white border-b border-stone-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-          <div className="space-y-4 max-w-2xl">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-4 sm:gap-6">
+          <div className="space-y-3 sm:space-y-4 max-w-2xl">
             <div className="inline-block text-xs font-bold uppercase tracking-widest text-[#d7262e]">
               Guided Training Paths
             </div>
-            <h2 className="text-4xl sm:text-5xl font-extrabold uppercase tracking-tight text-stone-900">
+            <h2 className="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-stone-900">
               Programs Built for Every Objective
             </h2>
-            <p className="text-stone-600 text-base sm:text-lg">
+            <p className="text-stone-600 text-sm sm:text-lg">
               No generic routines. Pick a track tailored to your current fitness level and target outcome.
             </p>
           </div>
 
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#d7262e] hover:text-[#a81a21] border-b-2 border-[#d7262e] pb-1"
+            className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#d7262e] hover:text-[#a81a21] border-b-2 border-[#d7262e] pb-1 self-start md:self-auto min-h-[44px]"
           >
             <span>Need advice? Speak to a head coach</span>
             <ArrowUpRight className="w-4 h-4" />

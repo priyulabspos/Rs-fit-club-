@@ -58,16 +58,16 @@ export function Plans({ plans, onSelectPlan }: PlansProps) {
   };
 
   return (
-    <section id="plans" className="py-20 bg-[#f7f3ee] border-b border-stone-200">
+    <section id="plans" className="py-14 sm:py-20 bg-[#f7f3ee] border-b border-stone-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+        <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4 mb-12 sm:mb-16">
           <div className="inline-block text-xs font-bold uppercase tracking-widest text-[#d7262e]">
             Transparent Pricing
           </div>
-          <h2 className="text-4xl sm:text-5xl font-extrabold uppercase tracking-tight text-stone-900">
+          <h2 className="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-stone-900">
             Membership Plans
           </h2>
-          <p className="text-stone-600 text-base sm:text-lg">
+          <p className="text-stone-600 text-sm sm:text-lg">
             Straightforward pricing with zero hidden charges. Choose the duration that best fits your commitment.
           </p>
         </div>
@@ -81,14 +81,14 @@ export function Plans({ plans, onSelectPlan }: PlansProps) {
             return (
               <div
                 key={p.id}
-                className={`rounded-2xl p-8 flex flex-col justify-between transition-all relative ${
+                className={`rounded-2xl p-5 sm:p-8 flex flex-col justify-between transition-all relative ${
                   isPopular
-                    ? 'bg-stone-900 text-white shadow-2xl border-2 border-[#d7262e] transform md:-translate-y-2'
+                    ? 'bg-stone-900 text-white shadow-2xl border-2 border-[#d7262e] transform md:-translate-y-2 mt-4 md:mt-0'
                     : 'bg-white text-stone-900 border border-stone-200 shadow-sm hover:shadow-md'
                 }`}
               >
                 {isPopular && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-[#d7262e] text-white text-[11px] font-extrabold uppercase tracking-widest flex items-center gap-1.5 shadow-md">
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-[#d7262e] text-white text-[11px] font-extrabold uppercase tracking-widest flex items-center gap-1.5 shadow-md whitespace-nowrap z-10">
                     <Sparkles className="w-3.5 h-3.5" />
                     <span>Most Popular</span>
                   </div>
@@ -154,7 +154,7 @@ export function Plans({ plans, onSelectPlan }: PlansProps) {
                 <div>
                   <button
                     onClick={() => handlePlanClick(p.name)}
-                    className={`w-full py-4 rounded-xl font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all ${
+                    className={`w-full py-3.5 sm:py-4 rounded-xl font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all min-h-[48px] touch-manipulation ${
                       isPopular
                         ? 'bg-[#d7262e] hover:bg-[#b01b22] text-white shadow-lg'
                         : 'bg-stone-900 hover:bg-black text-white'

@@ -5,16 +5,16 @@ import { Dumbbell, Phone, MapPin, Mail, ArrowUpRight } from 'lucide-react';
 export function Footer() {
   return (
     <footer className="bg-stone-950 text-white border-t border-stone-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10">
           {/* Brand Info */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="sm:col-span-2 lg:col-span-2 space-y-4">
             <Link href="/" className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg bg-[#d7262e] text-white flex items-center justify-center font-bold">
                 <Dumbbell className="w-5 h-5 -rotate-45" />
               </div>
               <div className="flex flex-col">
-                <span className="font-extrabold text-2xl tracking-tight uppercase leading-none text-white">
+                <span className="font-extrabold text-xl sm:text-2xl tracking-tight uppercase leading-none text-white">
                   RS FIT <span className="text-[#d7262e]">CLUB</span>
                 </span>
                 <span className="text-[10px] tracking-widest font-semibold uppercase text-stone-400 mt-0.5">
@@ -27,17 +27,17 @@ export function Footer() {
               RS Fit Club combines Olympic standard strength equipment, clean facilities, and modern biometric gate technology to give you an uncompromising training atmosphere.
             </p>
 
-            <div className="pt-2 text-xs text-stone-400 space-y-1">
+            <div className="pt-2 text-xs text-stone-400 space-y-2 sm:space-y-1">
               <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-[#d7262e]" />
+                <MapPin className="w-4 h-4 text-[#d7262e] shrink-0" />
                 <span>RS Fit Club, Main Street, Gym Hub</span>
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-[#d7262e]" />
+                <Phone className="w-4 h-4 text-[#d7262e] shrink-0" />
                 <span>+91 98765 43210</span>
               </div>
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-[#d7262e]" />
+                <Mail className="w-4 h-4 text-[#d7262e] shrink-0" />
                 <span>contact@rsfitclub.com</span>
               </div>
             </div>
@@ -50,22 +50,22 @@ export function Footer() {
             </h4>
             <ul className="space-y-2 text-xs text-stone-400">
               <li>
-                <a href="#about" className="hover:text-white transition-colors">About Us</a>
+                <a href="#about" className="hover:text-white transition-colors block py-1">About Us</a>
               </li>
               <li>
-                <a href="#facilities" className="hover:text-white transition-colors">Facilities & Equipment</a>
+                <a href="#facilities" className="hover:text-white transition-colors block py-1">Facilities & Equipment</a>
               </li>
               <li>
-                <a href="#programs" className="hover:text-white transition-colors">Training Programs</a>
+                <a href="#programs" className="hover:text-white transition-colors block py-1">Training Programs</a>
               </li>
               <li>
-                <a href="#plans" className="hover:text-white transition-colors">Membership Pricing</a>
+                <a href="#plans" className="hover:text-white transition-colors block py-1">Membership Pricing</a>
               </li>
               <li>
-                <a href="#trainers" className="hover:text-white transition-colors">Certified Coaches</a>
+                <a href="#trainers" className="hover:text-white transition-colors block py-1">Certified Coaches</a>
               </li>
               <li>
-                <a href="#contact" className="hover:text-white transition-colors">Contact & Enquiries</a>
+                <a href="#contact" className="hover:text-white transition-colors block py-1">Contact & Enquiries</a>
               </li>
             </ul>
           </div>
@@ -77,25 +77,25 @@ export function Footer() {
             </h4>
             <ul className="space-y-2 text-xs text-stone-400">
               <li>
-                <Link href="/login" className="hover:text-[#d7262e] transition-colors flex items-center gap-1">
+                <Link href="/login" className="hover:text-[#d7262e] transition-colors flex items-center gap-1 py-1">
                   <span>Member Sign In</span>
                   <ArrowUpRight className="w-3 h-3" />
                 </Link>
               </li>
               <li>
-                <Link href="/portal" className="hover:text-[#d7262e] transition-colors flex items-center gap-1">
+                <Link href="/portal" className="hover:text-[#d7262e] transition-colors flex items-center gap-1 py-1">
                   <span>Digital Pass & Attendance</span>
                   <ArrowUpRight className="w-3 h-3" />
                 </Link>
               </li>
               <li>
-                <Link href="/login" className="hover:text-[#d7262e] transition-colors flex items-center gap-1">
+                <Link href="/login" className="hover:text-[#d7262e] transition-colors flex items-center gap-1 py-1">
                   <span>Staff & Front-Desk Login</span>
                   <ArrowUpRight className="w-3 h-3" />
                 </Link>
               </li>
               <li>
-                <Link href="/admin" className="hover:text-[#d7262e] transition-colors flex items-center gap-1">
+                <Link href="/admin" className="hover:text-[#d7262e] transition-colors flex items-center gap-1 py-1">
                   <span>Owner Management System</span>
                   <ArrowUpRight className="w-3 h-3" />
                 </Link>

@@ -971,6 +971,92 @@
       }
     }
 
+    @media (max-width: 640px) {
+      .w {
+        padding: 0 16px;
+      }
+      .sec {
+        padding: 44px 0;
+      }
+      .hero .w {
+        padding-top: 24px;
+        padding-bottom: 24px;
+        gap: 28px;
+      }
+      .hero h1 {
+        font-size: clamp(38px, 12vw, 56px);
+      }
+      .hero p {
+        font-size: 16px;
+        margin: 16px 0 22px;
+      }
+      .row {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+      }
+      .row .btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        min-height: 48px;
+        display: inline-flex;
+        align-items: center;
+      }
+      .grid4, .st, .fac {
+        grid-template-columns: 1fr;
+      }
+      .fac {
+        grid-auto-rows: 200px;
+      }
+      .fac .ph:nth-child(1) {
+        grid-column: auto;
+      }
+      .plan {
+        padding: 24px 18px;
+      }
+      .price {
+        font-size: 42px;
+      }
+      .ct {
+        gap: 32px;
+      }
+      .modal {
+        padding: 20px;
+        width: calc(100vw - 32px);
+      }
+      .tools {
+        flex-direction: column;
+      }
+      .tools input, .tools select, .tools button {
+        width: 100%;
+      }
+      .btn {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      input, select, textarea {
+        font-size: 16px;
+        min-height: 44px;
+      }
+      .burger {
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+      .links a {
+        padding: 12px 0;
+        width: 100%;
+        border-bottom: 1px solid var(--line);
+        font-size: 16px;
+      }
+    }
+
     @media(prefers-reduced-motion:reduce) {
       * {
         animation: none !important;
@@ -2251,7 +2337,7 @@
       else if ('em' in d) memForm(+d.em)
     });
     document.addEventListener('input', e => { if (e.target.dataset.pi != null) { const i = +e.target.dataset.pi; plans[i].p = +e.target.value || 0; e.target.closest('.plan').querySelector('.price span').textContent = plans[i].p } });
-    $('#bg').onclick = () => $('#lk').classList.toggle('on'); $('#cl').onclick = close; $('#ov').onclick = e => { if (e.target.id == 'ov') close() }; document.onkeydown = e => { if (e.key == 'Escape') close() };
+    $('#bg').onclick = () => $('#lk').classList.toggle('on'); $('#lk a').forEach(a => a.addEventListener('click', () => $('#lk').classList.remove('on'))); $('#cl').onclick = close; $('#ov').onclick = e => { if (e.target.id == 'ov') close() }; document.onkeydown = e => { if (e.key == 'Escape') close() };
     $$('.tabs button').forEach(b => b.onclick = () => setRole(b.dataset.role));
     $('#sp').onclick = () => { const p = $('#pwd'), h = p.type == 'password'; p.type = h ? 'text' : 'password'; $('#sp').textContent = h ? 'Hide' : 'Show' };
     $('#fp').onclick = () => modal('<h3>Reset password</h3><p class="note">Demo only</p><form id="rf" style="margin-top:14px">' + field('Email', 'demo@example.com', 'email') + '<button class="btn red">Send reset link</button></form>') || ($('#rf').onsubmit = e => { e.preventDefault(); $('#mb').innerHTML = '<h3>Check your inbox ✓</h3><p style="margin:12px 0 18px">Demonstration only. No email was sent.</p><button class="btn" onclick="close_()">Close</button>' });

@@ -62,19 +62,19 @@ export function ContactForm({ selectedPlan = '', availablePlans = [] }: ContactF
   };
 
   return (
-    <section id="contact" className="py-20 bg-white border-b border-stone-200">
+    <section id="contact" className="py-14 sm:py-20 bg-white border-b border-stone-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
           {/* Left Column: Direct Contact Info */}
-          <div className="lg:col-span-5 space-y-8">
+          <div className="lg:col-span-5 space-y-6 sm:space-y-8">
             <div>
-              <div className="inline-block text-xs font-bold uppercase tracking-widest text-[#d7262e] mb-3">
+              <div className="inline-block text-xs font-bold uppercase tracking-widest text-[#d7262e] mb-2 sm:mb-3">
                 Get In Touch
               </div>
-              <h2 className="text-4xl sm:text-5xl font-extrabold uppercase tracking-tight text-stone-900 leading-tight">
+              <h2 className="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-stone-900 leading-tight">
                 Visit Us or Start Your <span className="text-[#d7262e]">Enquiry.</span>
               </h2>
-              <p className="text-stone-600 text-base mt-4 leading-relaxed font-normal">
+              <p className="text-stone-600 text-sm sm:text-base mt-3 sm:mt-4 leading-relaxed font-normal">
                 Drop by the training floor for a free walk-through, or send us a message below. We’ll show you around the facility and explain how our memberships work.
               </p>
             </div>
@@ -148,13 +148,13 @@ export function ContactForm({ selectedPlan = '', availablePlans = [] }: ContactF
 
           {/* Right Column: Live Interactive Form */}
           <div className="lg:col-span-7">
-            <div className="rounded-2xl bg-[#fcfbf9] border border-stone-200 p-8 sm:p-10 shadow-sm relative">
+            <div className="rounded-2xl bg-[#fcfbf9] border border-stone-200 p-5 sm:p-8 md:p-10 shadow-sm relative">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-lg bg-[#d7262e] text-white flex items-center justify-center font-bold">
+                <div className="w-10 h-10 rounded-lg bg-[#d7262e] text-white flex items-center justify-center font-bold shrink-0">
                   <Dumbbell className="w-5 h-5 -rotate-45" />
                 </div>
                 <div>
-                  <h3 className="font-extrabold text-2xl uppercase tracking-tight text-stone-900">
+                  <h3 className="font-extrabold text-xl sm:text-2xl uppercase tracking-tight text-stone-900">
                     Membership Enquiry
                   </h3>
                   <p className="text-xs text-stone-500">
@@ -176,13 +176,13 @@ export function ContactForm({ selectedPlan = '', availablePlans = [] }: ContactF
                   </p>
                   <button
                     onClick={() => setStatus('idle')}
-                    className="inline-block px-6 py-2.5 rounded-lg bg-stone-900 text-white text-xs font-bold uppercase tracking-wider hover:bg-black transition-colors"
+                    className="inline-block px-6 py-2.5 rounded-lg bg-stone-900 text-white text-xs font-bold uppercase tracking-wider hover:bg-black transition-colors min-h-[44px]"
                   >
                     Submit Another Enquiry
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
                   {status === 'error' && (
                     <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-[#d7262e] text-xs font-semibold flex items-center gap-2">
                       <AlertCircle className="w-4 h-4 shrink-0" />
@@ -200,7 +200,7 @@ export function ContactForm({ selectedPlan = '', availablePlans = [] }: ContactF
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="e.g. Rahul Sharma"
-                      className="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-stone-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#d7262e] focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-stone-900 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#d7262e] focus:border-transparent transition-all"
                     />
                   </div>
 
@@ -209,7 +209,7 @@ export function ContactForm({ selectedPlan = '', availablePlans = [] }: ContactF
                       Phone Number (10 Digits) <span className="text-[#d7262e]">*</span>
                     </label>
                     <div className="relative">
-                      <span className="absolute left-4 top-3.5 text-sm font-semibold text-stone-400">
+                      <span className="absolute left-4 top-3.5 text-base sm:text-sm font-semibold text-stone-400">
                         +91
                       </span>
                       <input
@@ -219,7 +219,7 @@ export function ContactForm({ selectedPlan = '', availablePlans = [] }: ContactF
                         value={phone}
                         onChange={(e) => setPhone(e.target.value.replace(/\D/g, '').slice(0, 10))}
                         placeholder="9876543210"
-                        className="w-full pl-14 pr-4 py-3 rounded-xl border border-stone-300 bg-white text-stone-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#d7262e] focus:border-transparent transition-all"
+                        className="w-full pl-14 pr-4 py-3 rounded-xl border border-stone-300 bg-white text-stone-900 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#d7262e] focus:border-transparent transition-all"
                       />
                     </div>
                   </div>
@@ -231,7 +231,7 @@ export function ContactForm({ selectedPlan = '', availablePlans = [] }: ContactF
                     <select
                       value={plan}
                       onChange={(e) => setPlan(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-stone-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#d7262e] focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-stone-900 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#d7262e] focus:border-transparent transition-all"
                     >
                       <option value="">-- Select a Plan or General Enquiry --</option>
                       {availablePlans.length > 0 ? (
@@ -260,14 +260,14 @@ export function ContactForm({ selectedPlan = '', availablePlans = [] }: ContactF
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder="e.g. I want to build strength, lose 5kg, or check timings for early morning workouts."
-                      className="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-stone-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#d7262e] focus:border-transparent transition-all resize-none"
+                      className="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-stone-900 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#d7262e] focus:border-transparent transition-all resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full py-4 rounded-xl bg-[#d7262e] hover:bg-[#b01b22] text-white font-extrabold text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all disabled:opacity-50"
+                    className="w-full py-3.5 sm:py-4 rounded-xl bg-[#d7262e] hover:bg-[#b01b22] text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all disabled:opacity-50 min-h-[48px] touch-manipulation"
                   >
                     {loading ? (
                       <span>Submitting...</span>
