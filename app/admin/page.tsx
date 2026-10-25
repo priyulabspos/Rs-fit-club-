@@ -5,22 +5,20 @@ import {
   Users,
   Dumbbell,
   IndianRupee,
-  ShieldCheck,
-  TrendingUp,
   Activity,
   Fingerprint,
-  DoorClosed,
-  Clock,
-  ArrowUpRight,
+  TrendingUp,
   Sparkles,
-  Zap,
   CheckCircle,
+  ArrowUpRight,
+  ShieldCheck,
 } from 'lucide-react';
+import { OlympicPlate, HexDumbbell, LoadedBarbell } from '@/components/gym-illustrations';
 
 export default async function AdminDashboardPage() {
   const user = await getCurrentUser();
 
-  // Basic counts from database
+  // Database metrics
   const memberCount = await prisma.member.count();
   const planCount = await prisma.plan.count();
   const recentMembers = await prisma.member.findMany({
@@ -62,16 +60,16 @@ export default async function AdminDashboardPage() {
               </span>
               <div>
                 <div className="text-[10px] uppercase font-bold text-gray-400">Gate Controller</div>
-                <div className="text-xs font-bold text-white">Main Entrance: Active</div>
+                <div className="text-xs font-bold text-white">Main Entrance: Armed</div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* KPI Stat Cards with Visual Glow */}
+      {/* KPI Stat Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {/* Card 1: Total Members */}
+        {/* Card 1: Active Members */}
         <div className="relative overflow-hidden bg-white border border-gray-200/80 rounded-2xl p-5 shadow-sm hover:shadow-md transition group">
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs font-bold uppercase tracking-wider text-gray-500">
@@ -88,7 +86,7 @@ export default async function AdminDashboardPage() {
           </div>
         </div>
 
-        {/* Card 2: Subscription Plans */}
+        {/* Card 2: Active Plans */}
         <div className="relative overflow-hidden bg-white border border-gray-200/80 rounded-2xl p-5 shadow-sm hover:shadow-md transition group">
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs font-bold uppercase tracking-wider text-gray-500">
@@ -139,28 +137,110 @@ export default async function AdminDashboardPage() {
         </div>
       </div>
 
-      {/* Visual Graphics Section: Charts & Biometric Scanner */}
+      {/* NEW: Realistic Gym Floor & Iron Gear Showcase */}
+      <div className="bg-gradient-to-br from-[#18181c] via-[#121215] to-[#0d0d0f] border border-white/10 rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
+        {/* Ambient Iron Glow */}
+        <div className="absolute -top-20 -right-20 w-60 h-60 bg-[#d7262e]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-white/10">
+          <div>
+            <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#ff4d56] mb-1">
+              <Dumbbell className="w-4 h-4" />
+              RS Fit Club Floor Equipment
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold uppercase italic tracking-wide text-white">
+              Heavy Iron, Free Weights & Power Racks
+            </h2>
+            <p className="text-xs text-gray-400 mt-1 max-w-xl">
+              Commercial-grade Olympic barbells, cast iron hex dumbbells, and calibrated competition bumper plates.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <span className="px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-gray-300">
+              Total Iron Capacity: <strong className="text-white">2,400 KG</strong>
+            </span>
+          </div>
+        </div>
+
+        {/* Realistic Equipment Visual Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 items-center">
+          {/* Equipment 1: Olympic Competition Bumper Plate 20KG */}
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col items-center text-center hover:border-[#d7262e]/50 transition duration-300 group">
+            <OlympicPlate size={130} weight="20" unit="KG" color="#d7262e" className="group-hover:rotate-6 transition duration-500" />
+            <div className="mt-4">
+              <div className="font-extrabold text-sm uppercase tracking-wider text-white">
+                20 KG Olympic Bumper Plate
+              </div>
+              <div className="text-[11px] text-gray-400 mt-0.5">
+                50mm Stainless Bushing • High-Density Rubber
+              </div>
+            </div>
+          </div>
+
+          {/* Equipment 2: Cast Iron Hex Dumbbell 30KG */}
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col items-center text-center hover:border-[#d7262e]/50 transition duration-300 group">
+            <div className="py-5">
+              <HexDumbbell size={160} weight="30 KG" className="group-hover:-rotate-3 transition duration-500" />
+            </div>
+            <div className="mt-1">
+              <div className="font-extrabold text-sm uppercase tracking-wider text-white">
+                30 KG Solid Hex Dumbbell
+              </div>
+              <div className="text-[11px] text-gray-400 mt-0.5">
+                Chrome Knurled Grip • Anti-Roll Hex Heads
+              </div>
+            </div>
+          </div>
+
+          {/* Equipment 3: Olympic Competition Bumper Plate 25KG */}
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col items-center text-center hover:border-[#d7262e]/50 transition duration-300 group">
+            <OlympicPlate size={130} weight="25" unit="KG" color="#1e1e24" className="group-hover:-rotate-6 transition duration-500" />
+            <div className="mt-4">
+              <div className="font-extrabold text-sm uppercase tracking-wider text-white">
+                25 KG Heavy Iron Plate
+              </div>
+              <div className="text-[11px] text-gray-400 mt-0.5">
+                Cast Iron Rim • Powerlifting Calibrated
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Barbell Loaded Visual Banner */}
+        <div className="mt-6 pt-6 border-t border-white/10">
+          <div className="flex items-center justify-between text-xs text-gray-400 mb-2">
+            <span className="font-bold uppercase tracking-wider text-gray-300">
+              Olympic Competition Barbell (20 KG + Loaded Plates)
+            </span>
+            <span className="text-[#ff4d56] font-semibold">Ready for Heavy Squats & Deadlifts</span>
+          </div>
+          <LoadedBarbell className="w-full" />
+        </div>
+      </div>
+
+      {/* Visual Analytics & Biometric Gate Section */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Graphic 1: Gate Traffic / Footfall Hourly Chart */}
+        {/* Footfall Hourly Bar Chart */}
         <div className="lg:col-span-8 bg-white border border-gray-200/80 rounded-2xl p-6 shadow-sm">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-gray-100 gap-2">
             <div>
               <div className="text-xs font-bold uppercase tracking-wider text-[#d7262e] flex items-center gap-1.5">
                 <Activity className="w-4 h-4" />
-                Live Access Analytics
+                Live Footfall Analytics
               </div>
               <h3 className="text-xl font-extrabold uppercase italic tracking-wide text-gray-900 mt-0.5">
-                Hourly Gym Footfall & Door Access
+                Hourly Gym Attendance & Door Access
               </h3>
             </div>
             <div className="flex items-center gap-2 text-xs text-gray-500">
-              <span className="inline-block w-3 h-3 rounded bg-[#d7262e]"></span> Peak Hours (6-9 AM & 5-9 PM)
+              <span className="inline-block w-3 h-3 rounded bg-[#d7262e]"></span> Peak Workout Hours (6-9 AM & 5-9 PM)
             </div>
           </div>
 
           {/* SVG Bar Chart Graphic */}
           <div className="mt-6 pt-4">
-            <div className="h-56 w-full flex items-end gap-2 sm:gap-3 justify-between px-2">
+            <div className="h-52 w-full flex items-end gap-2 sm:gap-3 justify-between px-2">
               {[
                 { hour: '06h', entries: 28, peak: true },
                 { hour: '07h', entries: 45, peak: true },
@@ -183,7 +263,7 @@ export default async function AdminDashboardPage() {
                     {item.entries} entries
                   </div>
                   {/* Visual Bar */}
-                  <div className="w-full bg-gray-100 rounded-t-md h-40 flex items-end overflow-hidden">
+                  <div className="w-full bg-gray-100 rounded-t-md h-36 flex items-end overflow-hidden">
                     <div
                       style={{ height: `${(item.entries / 54) * 100}%` }}
                       className={`w-full rounded-t-md transition-all duration-500 ${
@@ -200,7 +280,7 @@ export default async function AdminDashboardPage() {
           </div>
         </div>
 
-        {/* Graphic 2: Biometric Hardware Live Status Visual */}
+        {/* Biometric Gate Terminal Telemetry */}
         <div className="lg:col-span-4 bg-gradient-to-br from-[#18181b] to-[#111113] border border-white/10 rounded-2xl p-6 text-white shadow-sm flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-4">
@@ -212,21 +292,21 @@ export default async function AdminDashboardPage() {
               </span>
             </div>
 
-            {/* Visual Hardware Graphic Illustration */}
-            <div className="my-6 p-6 rounded-2xl bg-white/5 border border-white/10 flex flex-col items-center justify-center text-center relative overflow-hidden">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#d7262e] to-[#800e13] flex items-center justify-center text-white shadow-lg shadow-red-600/30 mb-3 animate-pulse">
-                <Fingerprint className="w-9 h-9" />
+            {/* Visual Hardware Terminal Card */}
+            <div className="my-4 p-5 rounded-2xl bg-white/5 border border-white/10 flex flex-col items-center justify-center text-center relative overflow-hidden">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#d7262e] to-[#800e13] flex items-center justify-center text-white shadow-lg shadow-red-600/30 mb-2.5 animate-pulse">
+                <Fingerprint className="w-8 h-8" />
               </div>
               <div className="font-extrabold text-sm uppercase tracking-wider text-white">
-                Biometric Reader + Mag-Lock
+                Biometric Terminal + Mag-Lock
               </div>
               <div className="text-[11px] text-gray-400 mt-1">
-                Local IP: 192.168.1.120 • Latency: 4ms
+                Local IP: 192.168.1.120 • 4ms Ping
               </div>
             </div>
 
-            {/* Hardware Telemetry List */}
-            <div className="space-y-2.5 text-xs text-gray-300">
+            {/* Telemetry rows */}
+            <div className="space-y-2 text-xs text-gray-300">
               <div className="flex justify-between py-1.5 border-b border-white/5">
                 <span className="text-gray-400">Magnetic Lock</span>
                 <span className="font-bold text-emerald-400">Locked (Normal)</span>
@@ -237,20 +317,18 @@ export default async function AdminDashboardPage() {
               </div>
               <div className="flex justify-between py-1.5 border-b border-white/5">
                 <span className="text-gray-400">Offline Fail-Safe</span>
-                <span className="font-bold text-emerald-400">Enabled</span>
+                <span className="font-bold text-emerald-400">Armed</span>
               </div>
             </div>
           </div>
 
-          <div className="mt-6 pt-4 border-t border-white/10">
-            <div className="text-[11px] text-gray-400 text-center">
-              Door release cycle: <span className="text-white font-semibold">10 seconds</span> on verified punch.
-            </div>
+          <div className="mt-4 pt-3 border-t border-white/10 text-[11px] text-gray-400 text-center">
+            Automatic release: <span className="text-white font-semibold">10 seconds</span> on verified member punch.
           </div>
         </div>
       </div>
 
-      {/* Recent Seeded Members Visual Roster */}
+      {/* Recent Enrolled Members Roster */}
       <div className="bg-white border border-gray-200/80 rounded-2xl p-6 shadow-sm">
         <div className="flex items-center justify-between pb-4 border-b border-gray-100 mb-4">
           <div>

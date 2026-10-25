@@ -13,6 +13,7 @@ import {
   UserCheck,
 } from 'lucide-react';
 import { Logo } from '@/components/logo';
+import { OlympicPlate, HexDumbbell } from '@/components/gym-illustrations';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -57,33 +58,33 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#0e0e10] flex items-center justify-center p-4 sm:p-6 relative overflow-hidden">
-      {/* Background Graphic Effects */}
-      <div className="absolute -top-40 -left-40 w-96 h-96 bg-[#d7262e]/20 rounded-full blur-[128px] pointer-events-none"></div>
-      <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-[#d7262e]/15 rounded-full blur-[128px] pointer-events-none"></div>
+    <main className="min-h-screen bg-[#0a0a0c] flex items-center justify-center p-4 sm:p-6 relative overflow-hidden">
+      {/* Background Ambient Glows */}
+      <div className="absolute -top-40 -left-40 w-96 h-96 bg-[#d7262e]/20 rounded-full blur-[140px] pointer-events-none"></div>
+      <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-[#d7262e]/15 rounded-full blur-[140px] pointer-events-none"></div>
 
       {/* Subtle Mesh Grid */}
       <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        className="absolute inset-0 opacity-[0.04] pointer-events-none"
         style={{
           backgroundImage: `radial-gradient(#ffffff 1px, transparent 1px)`,
           backgroundSize: '24px 24px',
         }}
       ></div>
 
-      <div className="w-full max-w-4xl grid grid-cols-1 lg:grid-cols-12 bg-[#17171a] border border-white/10 rounded-2xl shadow-2xl overflow-hidden relative z-10">
-        {/* Left Side: Brand & Visual Graphics Hero */}
-        <div className="lg:col-span-5 bg-gradient-to-br from-[#1c1c21] via-[#151518] to-[#0e0e11] p-8 lg:p-10 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10 relative">
+      <div className="w-full max-w-4xl grid grid-cols-1 lg:grid-cols-12 bg-[#141417] border border-white/10 rounded-3xl shadow-2xl overflow-hidden relative z-10">
+        {/* Left Side: Brand & Realistic Gym Iron Showcase */}
+        <div className="lg:col-span-5 bg-gradient-to-br from-[#19191e] via-[#131316] to-[#0a0a0d] p-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10 relative overflow-hidden">
           {/* Subtle Red Flare in corner */}
-          <div className="absolute top-0 right-0 w-32 h-32 bg-[#d7262e]/10 rounded-full blur-2xl pointer-events-none"></div>
+          <div className="absolute top-0 right-0 w-40 h-40 bg-[#d7262e]/15 rounded-full blur-3xl pointer-events-none"></div>
 
           <div>
-            <Logo size="lg" variant="light" className="mb-8" />
+            <Logo size="lg" variant="light" className="mb-6" />
 
-            <div className="space-y-4">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#d7262e]/15 text-[#ff4d56] border border-[#d7262e]/30">
+            <div className="space-y-3">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider bg-[#d7262e]/20 text-[#ff4d56] border border-[#d7262e]/40">
                 <Zap className="w-3.5 h-3.5" />
-                Management & Biometrics
+                Heavy Iron & Biometrics
               </span>
 
               <h2 className="text-3xl sm:text-4xl font-extrabold uppercase italic tracking-wide text-white leading-tight">
@@ -92,43 +93,56 @@ export default function LoginPage() {
               </h2>
 
               <p className="text-xs text-gray-400 leading-relaxed">
-                Centralized gym operations: real-time biometric turnstile syncing, automated fee tracking, and digital passes.
+                Single source of truth for membership dates, heavy iron floor access, and biometric gate locks.
               </p>
             </div>
           </div>
 
-          {/* Feature Badges Graphic */}
-          <div className="mt-8 pt-6 border-t border-white/10 space-y-3">
-            <div className="flex items-center gap-3 text-xs text-gray-300">
-              <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-[#ff4d56] flex-shrink-0">
+          {/* Realistic Gym Equipment Visuals: Olympic Plate & Hex Dumbbell */}
+          <div className="my-6 p-4 rounded-2xl bg-white/5 border border-white/10 relative overflow-hidden flex items-center justify-around group">
+            {/* Realistic Olympic Weight Plate (20 KG) */}
+            <div className="transform hover:scale-105 transition duration-300">
+              <OlympicPlate size={105} weight="20" unit="KG" color="#d7262e" />
+            </div>
+
+            {/* Realistic Hex Dumbbell (25 KG) */}
+            <div className="transform hover:scale-105 transition duration-300">
+              <HexDumbbell size={115} weight="25 KG" />
+            </div>
+          </div>
+
+          {/* Hardware & Floor Telemetry */}
+          <div className="pt-2 border-t border-white/10 space-y-2">
+            <div className="flex items-center gap-2.5 text-xs text-gray-300">
+              <div className="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-[#ff4d56] flex-shrink-0">
                 <Fingerprint className="w-4 h-4" />
               </div>
               <div>
-                <div className="font-semibold text-white">Biometric Gate Sync</div>
-                <div className="text-[11px] text-gray-500">Offline-first door security</div>
+                <div className="font-semibold text-white text-[12px]">Biometric Gate Sync</div>
+                <div className="text-[10px] text-gray-500">Magnetic lock offline fail-safe</div>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 text-xs text-gray-300">
-              <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-emerald-400 flex-shrink-0">
+            <div className="flex items-center gap-2.5 text-xs text-gray-300">
+              <div className="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-emerald-400 flex-shrink-0">
                 <ShieldCheck className="w-4 h-4" />
               </div>
               <div>
-                <div className="font-semibold text-white">Automated Validity</div>
-                <div className="text-[11px] text-gray-500">Instant expiry cutoff</div>
+                <div className="font-semibold text-white text-[12px]">Automated Expiry Cutoff</div>
+                <div className="text-[10px] text-gray-500">Unpaid access automatically denied</div>
               </div>
             </div>
           </div>
         </div>
 
         {/* Right Side: Login Form */}
-        <div className="lg:col-span-7 bg-[#17171a] p-8 lg:p-10 flex flex-col justify-center">
+        <div className="lg:col-span-7 bg-[#141417] p-8 lg:p-10 flex flex-col justify-center">
           <div className="mb-6">
-            <h3 className="text-2xl font-bold uppercase italic tracking-wide text-white">
+            <h3 className="text-2xl font-black uppercase italic tracking-wide text-white">
               System Sign In
             </h3>
             <p className="text-xs text-gray-400 mt-1">
-              Enter your credentials to access the console
+              Enter your credentials to access the RS Fit Club management console
             </p>
           </div>
 
