@@ -3,12 +3,25 @@ import { ArrowRight, ShieldCheck, Flame, Users, Clock, Award } from 'lucide-reac
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-[#f7f3ee] py-12 sm:py-20 lg:py-24 border-b border-stone-200">
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#fcfbf9] via-[#f7f3ee] to-[#f4eee6] py-12 sm:py-20 lg:py-24 border-b border-stone-200">
       {/* Decorative background grid and accent */}
-      <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#141414_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
-      <div className="absolute top-0 right-0 -mt-12 -mr-12 w-72 sm:w-96 h-72 sm:h-96 bg-red-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 opacity-[0.035] bg-[radial-gradient(#141414_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
+      <div className="absolute -top-16 -right-16 w-80 sm:w-[32rem] h-80 sm:h-[32rem] bg-red-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 -left-16 w-72 sm:w-96 h-72 sm:h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      {/* Subtle Giant 'RS' Athletic Watermark */}
+      <div
+        className="absolute -right-6 -bottom-10 select-none pointer-events-none z-0 hidden md:block font-black italic text-[28vw] leading-none text-transparent"
+        style={{
+          WebkitTextStroke: '2px rgba(215, 38, 46, 0.06)',
+          fontFamily: '"Barlow Condensed", Impact, sans-serif',
+        }}
+        aria-hidden="true"
+      >
+        RS
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
           {/* Main Copy */}
           <div className="lg:col-span-7 space-y-5 sm:space-y-6 text-center lg:text-left">

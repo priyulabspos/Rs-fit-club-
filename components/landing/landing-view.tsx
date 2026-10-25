@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Navbar } from './navbar';
+import { AmbientBackground } from './ambient-background';
 import { Hero } from './hero';
 import { About } from './about';
 import { Facilities } from './facilities';
@@ -32,7 +33,10 @@ export function LandingView({ user, plans }: LandingViewProps) {
   const [selectedPlan, setSelectedPlan] = useState<string>('');
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#fcfbf9] text-stone-900 selection:bg-[#d7262e] selection:text-white">
+    <div className="min-h-screen flex flex-col bg-[#fcfbf9] text-stone-900 selection:bg-[#d7262e] selection:text-white relative">
+      {/* Dynamic ambient background with athletic grid & orbs */}
+      <AmbientBackground />
+
       {/* Navbar with auth status & smooth navigation */}
       <Navbar user={user} />
 
