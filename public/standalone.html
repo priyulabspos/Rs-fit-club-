@@ -633,6 +633,53 @@
       font-size: 13px
     }
 
+    .priyulabs-credit {
+      display: inline-flex !important;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none !important;
+      padding: 6px 16px !important;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: 9999px;
+      color: #C2CEE5 !important;
+      font-size: 12px;
+      line-height: 1;
+      transition: all .2s ease;
+      cursor: pointer;
+    }
+
+    .priyulabs-credit:hover {
+      background: rgba(255, 255, 255, .12);
+      border-color: rgba(255, 255, 255, .3);
+      color: #ffffff !important;
+      transform: translateY(-1px);
+    }
+
+    .priyulabs-logo-img {
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      object-fit: contain;
+      background: #ffffff;
+      padding: 2px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, .25);
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .priyulabs-text {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+
+    .priyulabs-text strong {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
     .ov {
       position: fixed;
       inset: 0;
@@ -3949,7 +3996,17 @@
         <div>
           <h3>Members</h3><a data-go="trainers">Trainers</a><a data-go="contact">Contact</a><a data-login>Login</a>
         </div>
-        <div class="copy">© Prototype for client presentation. Sample content only; not a live website.</div>
+        <div class="copy">
+          <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; text-align:center;">
+            <div>© Prototype for client presentation. Sample content only; not a live website.</div>
+            <div>
+              <a href="https://priyulabs.in/" target="_blank" rel="noopener noreferrer" class="priyulabs-credit" aria-label="Powered by PriyuLabs">
+                <img src="/priyulabs-logo.png" alt="PriyuLabs Logo" class="priyulabs-logo-img" onerror="this.onerror=null;this.src='priyulabs-logo.png';" />
+                <span class="priyulabs-text">Powered by <strong>PriyuLabs</strong></span>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
   </div>

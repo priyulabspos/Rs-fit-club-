@@ -125,15 +125,37 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500">
-          <div>
-            © {new Date().getFullYear()} RS Fit Club. All rights reserved.
+        <div className="mt-12 pt-8 border-t border-stone-800 flex flex-col items-center justify-center gap-5 text-xs text-stone-500">
+          <div className="flex flex-col sm:flex-row items-center justify-between w-full gap-4">
+            <div>
+              © {new Date().getFullYear()} RS Fit Club. All rights reserved.
+            </div>
+            <div className="flex items-center gap-6">
+              <span>Powered by Next.js & Biometric Access</span>
+              <Link href="/login" className="hover:text-stone-300 transition-colors">
+                Staff Portal
+              </Link>
+            </div>
           </div>
-          <div className="flex items-center gap-6">
-            <span>Powered by Next.js & Biometric Access</span>
-            <Link href="/login" className="hover:text-stone-300 transition-colors">
-              Staff Portal
-            </Link>
+
+          {/* Centered PriyuLabs Credit */}
+          <div className="pt-1">
+            <a
+              href="https://priyulabs.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-stone-300 hover:text-white transition-all group cursor-pointer shadow-sm"
+              aria-label="Powered by PriyuLabs"
+            >
+              <img
+                src="/priyulabs-logo.png"
+                alt="PriyuLabs Logo"
+                className="w-6 h-6 rounded-md object-contain bg-white p-0.5 shadow-sm shrink-0"
+              />
+              <span className="text-xs">
+                Powered by <strong className="font-bold text-white group-hover:text-blue-400 transition-colors">PriyuLabs</strong>
+              </span>
+            </a>
           </div>
         </div>
       </div>
