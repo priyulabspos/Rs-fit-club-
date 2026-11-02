@@ -13,52 +13,66 @@ export const metadata: Metadata = {
   },
 };
 
+// Fallback plans if database is not yet seeded or when DEMO_MODE is enabled
+const FALLBACK_PLANS = [
+  {
+    id: 'plan-1',
+    name: 'Monthly Standard',
+    durationDays: 30,
+    priceInPaise: 150000,
+    joiningFeeInPaise: 50000,
+    description: 'Full training floor access, cardio equipment, and biometric gate pass.',
+    isActive: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: 'plan-2',
+    name: 'Quarterly Pro (3 Months)',
+    durationDays: 90,
+    priceInPaise: 400000,
+    joiningFeeInPaise: 0,
+    description: 'Includes body scan, fitness roadmap, and zero joining fee.',
+    isActive: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: 'plan-3',
+    name: 'Annual Elite (1 Year)',
+    durationDays: 365,
+    priceInPaise: 1400000,
+    joiningFeeInPaise: 0,
+    description: 'Best overall value. Personal trainer sessions and guest passes included.',
+    isActive: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+];
+
 export default async function HomePage() {
-  const user = await getCurrentUser();
+  const isDemoMode = process.env.DEMO_MODE === 'true';
 
-  // Fetch active plans from database
-  let plans = await db.plan.findMany({
-    where: { isActive: true },
-    orderBy: { durationDays: 'asc' },
-  });
+  let user = null;
+  let plans = null;
 
-  // Fallback plans if database is not yet seeded
-  if (!plans || plans.length === 0) {
-    plans = [
-      {
-        id: 'plan-1',
-        name: 'Monthly Standard',
-        durationDays: 30,
-        priceInPaise: 150000,
-        joiningFeeInPaise: 50000,
-        description: 'Full training floor access, cardio equipment, and biometric gate pass.',
-        isActive: true,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        id: 'plan-2',
-        name: 'Quarterly Pro (3 Months)',
-        durationDays: 90,
-        priceInPaise: 400000,
-        joiningFeeInPaise: 0,
-        description: 'Includes body scan, fitness roadmap, and zero joining fee.',
-        isActive: true,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        id: 'plan-3',
-        name: 'Annual Elite (1 Year)',
-        durationDays: 365,
-        priceInPaise: 1400000,
-        joiningFeeInPaise: 0,
-        description: 'Best overall value. Personal trainer sessions and guest passes included.',
-        isActive: true,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-    ];
+  if (isDemoMode) {
+    // In demo mode, bypass all database queries and use fallback sample plans
+    plans = FALLBACK_PLANS;
+  } else {
+    // Normal database-driven behavior
+    user = await getCurrentUser();
+
+    // Fetch active plans from database
+    plans = await db.plan.findMany({
+      where: { isActive: true },
+      orderBy: { durationDays: 'asc' },
+    });
+
+    // Fallback plans if database is not yet seeded
+    if (!plans || plans.length === 0) {
+      plans = FALLBACK_PLANS;
+    }
   }
 
   return <LandingView user={user} plans={plans} />;
